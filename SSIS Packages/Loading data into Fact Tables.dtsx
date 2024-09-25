@@ -1,0 +1,2986 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2024 3:05:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JAYSON_GOR"
+  DTS:CreatorName="JAYSON_GOR\gorja"
+  DTS:DTSID="{CAD6679F-FAF0-4030-A2A3-56B12ED36AC4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package3"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{3CDBDBA9-C7C9-4565-BAB9-D906668E3E85}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2FCBCE7F-05D7-4EE4-B1C9-ECF9A91798BF}"
+      DTS:ObjectName="Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Jayson_Gor\DATA_ANALYST;Initial Catalog=OIL-DATAWAREHOUSE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package3-{2FCBCE7F-05D7-4EE4-B1C9-ECF9A91798BF}Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3FC7CBB0-5E11-4C1B-A830-5934300AD8EB}"
+      DTS:ObjectName="Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=Jayson_Gor\DATA_ANALYST;Initial Catalog=OIL-DATAWAREHOUSE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{3FC7CBB0-5E11-4C1B-A830-5934300AD8EB}Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load into factCollection"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BF15A8A2-59AF-472C-B7CC-CB01851A054B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load into factCollection"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load into factCollection\FactCollection"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FactCollection"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Collection]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load into factCollection\FactCollection.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[SalesKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesKey"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[SalesKey]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[CompanyKey]"
+                      cachedDataType="i4"
+                      cachedName="CompanyKey"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CompanyKey]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[LocationKey]"
+                      cachedDataType="i4"
+                      cachedName="LocationKey"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[LocationKey]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[CurrencyRate]"
+                      cachedDataType="numeric"
+                      cachedName="CurrencyRate"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CurrencyRate]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[DateOrder]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateOrder"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DateOrder]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateOrder]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[WarehouseID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseID"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[WarehouseID]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[DeliveryStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DeliveryStatus"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryStatus]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DeliveryStatus]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[Origin]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Origin"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[Origin]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Origin]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[Discount]"
+                      cachedDataType="numeric"
+                      cachedName="Discount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[PriceTotal]"
+                      cachedDataType="numeric"
+                      cachedName="PriceTotal"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[PriceTotal]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceTotal]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[QtyInvoiced]"
+                      cachedDataType="numeric"
+                      cachedName="QtyInvoiced"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyInvoiced]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyInvoiced]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[QtyDelivered]"
+                      cachedDataType="numeric"
+                      cachedName="QtyDelivered"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyDelivered]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyDelivered]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[ProductUOM]"
+                      cachedDataType="i4"
+                      cachedName="ProductUOM"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[ProductUOM]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductUOM]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[PriceUnit]"
+                      cachedDataType="numeric"
+                      cachedName="PriceUnit"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[PriceUnit]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceUnit]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[QtyObserved]"
+                      cachedDataType="numeric"
+                      cachedName="QtyObserved"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyObserved]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyObserved]" />
+                    <inputColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].Columns[QtyAt20]"
+                      cachedDataType="numeric"
+                      cachedName="QtyAt20"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyAt20]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyAt20]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[CollectionFactKey]"
+                      dataType="i4"
+                      name="CollectionFactKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      dataType="i4"
+                      name="SalesKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[LocationKey]"
+                      dataType="i4"
+                      name="LocationKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyRate]"
+                      dataType="numeric"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DateOrder]"
+                      dataType="dbTimeStamp"
+                      name="DateOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="DeliveryStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[Origin]"
+                      dataType="wstr"
+                      length="255"
+                      name="Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[PriceTotal]"
+                      dataType="numeric"
+                      name="PriceTotal"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyInvoiced]"
+                      dataType="numeric"
+                      name="QtyInvoiced"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyDelivered]"
+                      dataType="numeric"
+                      name="QtyDelivered"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[ProductUOM]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductUOM" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[PriceUnit]"
+                      dataType="numeric"
+                      name="PriceUnit"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyObserved]"
+                      dataType="numeric"
+                      name="QtyObserved"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input].ExternalColumns[QtyAt20]"
+                      dataType="numeric"
+                      name="QtyAt20"
+                      precision="18"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load into factCollection\FactCollection.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load into factCollection\FactCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\FactCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\FactCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\FactCollection.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load into factCollection\Join for Collection fact"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Join for Collection fact"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    -- DateKey from date_dim
+    d.date_key AS DateKey,
+
+    -- SalesKey from dim_Sales
+    s.SalesKey AS SalesKey,
+
+    -- CompanyKey from company_dim
+    c.company_key AS CompanyKey,
+
+    -- ProductKey from product_dim
+    p.ProductKey AS ProductKey,
+
+    -- LocationKey from location_dim
+    l.LocationKey AS LocationKey,
+
+    -- Collection Metrics from dim_Sales
+    s.CurrencyRate,
+    s.DateOrder,
+    s.WarehouseID,
+    s.DeliveryStatus,
+    s.Origin,
+    s.State,
+    s.Discount,
+    s.PriceTotal,
+    s.QtyInvoiced,
+    s.QtyDelivered,
+    s.ProductUOM,
+    s.PriceUnit,
+    s.QtyObserved,
+    s.QtyAt20
+FROM
+    dim_Sales s
+
+-- Join with date_dim on DateOrder
+JOIN 
+    date_dim d ON CONVERT(DATE, s.DateOrder) = d.full_date
+
+-- Join with company_dim on CompanyID
+JOIN 
+    Company_dim c ON s.CompanyID = c.id
+
+-- Join with product_dim on ProductID
+JOIN 
+    Product_Dim p ON s.ProductID = p.ProductID
+
+-- Join with location_dim on WarehouseID
+JOIN 
+    Location_Dim l ON s.WarehouseID = l.WarehouseID
+
+-- Filter to only include deliveries with 'full' or 'partial' status
+WHERE 
+    s.DeliveryStatus IN ('full', 'partial');</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load into factCollection\Join for Collection fact.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      name="SalesKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      name="CompanyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[LocationKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[LocationKey]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[LocationKey]"
+                      name="LocationKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[CurrencyRate]"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateOrder]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DateOrder]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DateOrder]"
+                      name="DateOrder"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[WarehouseID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[WarehouseID]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[WarehouseID]"
+                      name="WarehouseID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DeliveryStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DeliveryStatus]"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[DeliveryStatus]"
+                      name="DeliveryStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Origin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[Origin]"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Origin]"
+                      name="Origin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Discount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[Discount]"
+                      name="Discount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[PriceTotal]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceTotal]"
+                      name="PriceTotal"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyInvoiced]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyInvoiced]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyInvoiced]"
+                      name="QtyInvoiced"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyDelivered]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyDelivered]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyDelivered]"
+                      name="QtyDelivered"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductUOM]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[ProductUOM]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[ProductUOM]"
+                      name="ProductUOM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceUnit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[PriceUnit]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[PriceUnit]"
+                      name="PriceUnit"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyObserved]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyObserved]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyObserved]"
+                      name="QtyObserved"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyAt20]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyAt20]"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].Columns[QtyAt20]"
+                      name="QtyAt20"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      dataType="i4"
+                      name="SalesKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[LocationKey]"
+                      dataType="i4"
+                      name="LocationKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRate]"
+                      dataType="numeric"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DateOrder]"
+                      dataType="dbTimeStamp"
+                      name="DateOrder" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[WarehouseID]"
+                      dataType="i4"
+                      name="WarehouseID" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[DeliveryStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="DeliveryStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[Origin]"
+                      dataType="wstr"
+                      length="255"
+                      name="Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                      dataType="numeric"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[PriceTotal]"
+                      dataType="numeric"
+                      name="PriceTotal"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyInvoiced]"
+                      dataType="numeric"
+                      name="QtyInvoiced"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyDelivered]"
+                      dataType="numeric"
+                      name="QtyDelivered"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[ProductUOM]"
+                      dataType="i4"
+                      name="ProductUOM" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[PriceUnit]"
+                      dataType="numeric"
+                      name="PriceUnit"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyObserved]"
+                      dataType="numeric"
+                      name="QtyObserved"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output].ExternalColumns[QtyAt20]"
+                      dataType="numeric"
+                      name="QtyAt20"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      name="SalesKey" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      name="CompanyKey" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[LocationKey]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[LocationKey]"
+                      name="LocationKey" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[CurrencyRate]"
+                      name="CurrencyRate"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DateOrder]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DateOrder]"
+                      name="DateOrder" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[WarehouseID]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[WarehouseID]"
+                      name="WarehouseID" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DeliveryStatus]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[DeliveryStatus]"
+                      name="DeliveryStatus" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[Origin]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[Origin]"
+                      name="Origin" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[Discount]"
+                      name="Discount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[PriceTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[PriceTotal]"
+                      name="PriceTotal"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyInvoiced]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyInvoiced]"
+                      name="QtyInvoiced"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyDelivered]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyDelivered]"
+                      name="QtyDelivered"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ProductUOM]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ProductUOM]"
+                      name="ProductUOM" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[PriceUnit]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[PriceUnit]"
+                      name="PriceUnit"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyObserved]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyObserved]"
+                      name="QtyObserved"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyAt20]"
+                      dataType="numeric"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[QtyAt20]"
+                      name="QtyAt20"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load into factCollection.Paths[OLE DB Source Output]"
+              endId="Package\Load into factCollection\FactCollection.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load into factCollection\Join for Collection fact.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load into FactStock"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{05a6285c-74c3-4780-9846-071362b9b66e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load into FactStock"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2FCBCE7F-05D7-4EE4-B1C9-ECF9A91798BF}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="INSERT INTO Fact_Finance&#xA;(&#xA;    DateKey, &#xA;    CompanyKey, &#xA;    AccountKey, &#xA;    CurrencyKey, &#xA;    ProductKey, &#xA;    JournalKey, &#xA;    JournalName, &#xA;    AccountType, &#xA;    CurrencyID, &#xA;    Debit, &#xA;    Credit, &#xA;    Balance, &#xA;    AmountCurrency, &#xA;    AmountTotal, &#xA;    State, &#xA;    Date_Move, &#xA;    LatestRate, &#xA;    LatestRateDate&#xA;)&#xA;SELECT&#xA;    d.date_key AS DateKey,&#xA;    c.company_key AS CompanyKey,&#xA;    a.AccountKey AS AccountKey,&#xA;    cr.CurrencyKey AS CurrencyKey,&#xA;    p.ProductKey AS ProductKey,&#xA;    j.JournalKey AS JournalKey,&#xA;    j.Name AS JournalName,&#xA;    a.AccountType AS AccountType,&#xA;    a.CurrencyID AS CurrencyID,&#xA;    a.Debit,&#xA;    a.Credit,&#xA;    a.Balance,&#xA;    a.AmountCurrency,&#xA;    a.AmountTotal,&#xA;    a.State,&#xA;    a.Date_Move,&#xA;    cr.LatestRate,&#xA;    cr.LatestRateDate&#xA;FROM &#xA;    Accounts_Dim a&#xA;&#xA;-- Join with date_dim on the Date_Move column&#xA;JOIN &#xA;    date_dim d ON CONVERT(DATE, a.Date_Move) = d.full_date&#xA;&#xA;-- Join with company_dim on CompanyID&#xA;JOIN &#xA;    Company_dim c ON a.CompanyID = c.id&#xA;&#xA;-- Join with currency_dim on CurrencyID&#xA;JOIN &#xA;    Currency_Dim cr ON a.CurrencyID = cr.CurrencyID&#xA;&#xA;-- Join with journal_dim on JournalID and include Journal Name&#xA;JOIN &#xA;    Journal_Dim j ON a.JournalID = j.JournalID&#xA;&#xA;-- Left Join with product_dim to allow NULL ProductKey, but filter out NULLs later&#xA;LEFT JOIN &#xA;    Product_Dim p ON a.ProductID = p.ProductID&#xA;&#xA;-- Filter to include posted transactions, relevant journal names, account types, and non-null products&#xA;WHERE &#xA;    a.State = 'posted'&#xA;    AND p.ProductKey IS NOT NULL&#xA;    AND j.Name = 'Customer Invoices'&#xA;    AND a.AccountType IN ('income', 'expense_depreciation', 'expense', 'expense_direct_cost')&#xA;    AND a.Date_Move &gt;= '2022-01-01';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading into Fact Finance"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3ce8f78d-1ff1-4647-b395-5ad2857342ef}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading into Fact Finance"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading into Fact Finance\Fact_Finance"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact_Finance"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Finance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading into Fact Finance\Fact_Finance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[CompanyKey]"
+                      cachedDataType="i4"
+                      cachedName="CompanyKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CompanyKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[AccountKey]"
+                      cachedDataType="i4"
+                      cachedName="AccountKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[CurrencyKey]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[JournalKey]"
+                      cachedDataType="i4"
+                      cachedName="JournalKey"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalKey]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[AccountType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AccountType"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountType]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[CurrencyID]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyID"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyID]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[JournalName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="JournalName"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalName]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalName]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[Debit]"
+                      cachedDataType="numeric"
+                      cachedName="Debit"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Debit]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Debit]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[Credit]"
+                      cachedDataType="numeric"
+                      cachedName="Credit"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Credit]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Credit]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[Balance]"
+                      cachedDataType="numeric"
+                      cachedName="Balance"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Balance]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[AmountCurrency]"
+                      cachedDataType="numeric"
+                      cachedName="AmountCurrency"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountCurrency]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountCurrency]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[AmountTotal]"
+                      cachedDataType="numeric"
+                      cachedName="AmountTotal"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountTotal]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountTotal]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[Date_Move]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date_Move"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Date_Move]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Date_Move]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[LatestRate]"
+                      cachedDataType="numeric"
+                      cachedName="LatestRate"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRate]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRate]" />
+                    <inputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].Columns[LatestRateDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LatestRateDate"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRateDate]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRateDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[FinanceFactKey]"
+                      dataType="i4"
+                      name="FinanceFactKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountKey]"
+                      dataType="i4"
+                      name="AccountKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyKey]"
+                      dataType="i4"
+                      name="CurrencyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalKey]"
+                      dataType="i4"
+                      name="JournalKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      name="AccountType" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                      dataType="i4"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      name="JournalName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Debit]"
+                      dataType="numeric"
+                      name="Debit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Credit]"
+                      dataType="numeric"
+                      name="Credit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
+                      dataType="numeric"
+                      name="Balance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountCurrency]"
+                      dataType="numeric"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountTotal]"
+                      dataType="numeric"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      name="Date_Move" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      name="LatestRateDate" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRate]"
+                      dataType="numeric"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact Finance\Fact_Finance.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Fact_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Fact_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Fact_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into Fact Finance\Staging FInance"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Staging FInance"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Finance_Staging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    -- DateKey from date_dim
+    d.date_key AS DateKey,
+
+    -- CompanyKey from company_dim
+    c.company_key AS CompanyKey,
+
+    -- AccountKey from accounts_dim
+    a.AccountKey AS AccountKey,
+
+    -- CurrencyKey from currency_dim
+    cr.CurrencyKey AS CurrencyKey,
+
+    -- ProductKey from product_dim
+    p.ProductKey AS ProductKey,
+
+    -- JournalKey and JournalName from journal_dim
+    j.JournalKey AS JournalKey,
+    j.Name AS JournalName,
+
+    -- Account Type and CurrencyID from accounts_dim
+    a.AccountType AS AccountType,
+    a.CurrencyID AS CurrencyID,
+
+    -- Financial metrics from accounts_dim
+    a.Debit,
+    a.Credit,
+    a.Balance,
+    a.AmountCurrency,
+    a.AmountTotal,
+    a.State,
+    a.Date_Move,
+	cr.LatestRate,
+	cr.LatestRateDate
+
+FROM 
+    Accounts_Dim a
+
+-- Join with date_dim on the Date_Move column
+JOIN 
+    date_dim d ON CONVERT(DATE, a.Date_Move) = d.full_date
+
+-- Join with company_dim on CompanyID
+JOIN 
+    Company_dim c ON a.CompanyID = c.id
+
+-- Join with currency_dim on CurrencyID
+JOIN 
+    Currency_Dim cr ON a.CurrencyID = cr.CurrencyID
+
+-- Join with journal_dim on JournalID and include Journal Name
+JOIN 
+    Journal_Dim j ON a.JournalID = j.JournalID
+
+-- Left Join with product_dim to allow NULL ProductKey, but filter out NULLs later
+LEFT JOIN 
+    Product_Dim p ON a.ProductID = p.ProductID
+
+-- Filter to include posted transactions, relevant journal names, account types, and non-null products
+WHERE 
+    a.State = 'posted'
+    AND p.ProductKey IS NOT NULL
+    AND j.Name = 'Customer Invoices'
+    AND a.AccountType IN ('income', 'expense_depreciation', 'expense', 'expense_direct_cost')
+    AND a.Date_Move &gt;= '2022-01-01';  -- Example date range filter</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading into Fact Finance\Staging FInance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      name="CompanyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountKey]"
+                      name="AccountKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyKey]"
+                      name="CurrencyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[JournalKey]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalKey]"
+                      name="JournalKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AccountType]"
+                      name="AccountType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyID]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[CurrencyID]"
+                      name="CurrencyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[JournalName]"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[JournalName]"
+                      name="JournalName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Debit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Debit]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Debit]"
+                      name="Debit"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Credit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Credit]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Credit]"
+                      name="Credit"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Balance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Balance]"
+                      name="Balance"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountCurrency]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AmountCurrency]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountCurrency]"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AmountTotal]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[AmountTotal]"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Date_Move]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[Date_Move]"
+                      name="Date_Move"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[LatestRateDate]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRateDate]"
+                      name="LatestRateDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[LatestRate]"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].Columns[LatestRate]"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
+                      dataType="i4"
+                      name="AccountKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyKey]"
+                      dataType="i4"
+                      name="CurrencyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[JournalKey]"
+                      dataType="i4"
+                      name="JournalKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      name="AccountType" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyID]"
+                      dataType="i4"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      name="JournalName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Debit]"
+                      dataType="numeric"
+                      name="Debit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Credit]"
+                      dataType="numeric"
+                      name="Credit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      dataType="numeric"
+                      name="Balance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AmountCurrency]"
+                      dataType="numeric"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[AmountTotal]"
+                      dataType="numeric"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      name="Date_Move" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      name="LatestRateDate" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output].ExternalColumns[LatestRate]"
+                      dataType="numeric"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
+                      name="AccountKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CurrencyKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CurrencyKey]"
+                      name="CurrencyKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      name="CompanyKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[JournalKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[JournalKey]"
+                      name="JournalKey" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                      name="AccountType" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CurrencyID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[CurrencyID]"
+                      name="CurrencyID" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[JournalName]"
+                      name="JournalName" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Debit]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Debit]"
+                      name="Debit"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Credit]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Credit]"
+                      name="Credit"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      name="Balance"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AmountCurrency]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AmountCurrency]"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AmountTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[AmountTotal]"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[Date_Move]"
+                      name="Date_Move" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[LatestRateDate]"
+                      name="LatestRateDate" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[LatestRate]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[LatestRate]"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading into Fact Finance.Paths[OLE DB Source Output]"
+              endId="Package\Loading into Fact Finance\Fact_Finance.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading into Fact Finance\Staging FInance.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading into finance staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4e516743-fac8-4707-b5d0-fe1b8bdc4b0e}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading into finance staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading into finance staging\Join for Finance"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Join for Finance"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    -- DateKey from date_dim
+    d.date_key AS DateKey,
+
+    -- CompanyKey from company_dim
+    c.company_key AS CompanyKey,
+
+    -- AccountKey from accounts_dim
+    a.AccountKey AS AccountKey,
+
+    -- CurrencyKey from currency_dim
+    cr.CurrencyKey AS CurrencyKey,
+
+    -- ProductKey from product_dim
+    p.ProductKey AS ProductKey,
+
+    -- JournalKey and JournalName from journal_dim
+    j.JournalKey AS JournalKey,
+    j.Name AS JournalName,
+
+    -- Account Type and CurrencyID from accounts_dim
+    a.AccountType AS AccountType,
+    a.CurrencyID AS CurrencyID,
+
+    -- Financial metrics from accounts_dim
+    a.Debit,
+    a.Credit,
+    a.Balance,
+    a.AmountCurrency,
+    a.AmountTotal,
+    a.State,
+    a.Date_Move,
+	cr.LatestRate,
+	cr.LatestRateDate
+
+FROM 
+    Accounts_Dim a
+
+-- Join with date_dim on the Date_Move column
+JOIN 
+    date_dim d ON CONVERT(DATE, a.Date_Move) = d.full_date
+
+-- Join with company_dim on CompanyID
+JOIN 
+    Company_dim c ON a.CompanyID = c.id
+
+-- Join with currency_dim on CurrencyID
+JOIN 
+    Currency_Dim cr ON a.CurrencyID = cr.CurrencyID
+
+-- Join with journal_dim on JournalID and include Journal Name
+JOIN 
+    Journal_Dim j ON a.JournalID = j.JournalID
+
+-- Left Join with product_dim to allow NULL ProductKey, but filter out NULLs later
+LEFT JOIN 
+    Product_Dim p ON a.ProductID = p.ProductID
+
+-- Filter to include posted transactions, relevant journal names, account types, and non-null products
+WHERE 
+    a.State = 'posted'
+    AND p.ProductKey IS NOT NULL
+    AND j.Name = 'Customer Invoices'
+    AND a.AccountType IN ('income', 'expense_depreciation', 'expense', 'expense_direct_cost')
+    AND a.Date_Move &gt;= '2022-01-01';  -- Example date range filter</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading into finance staging\Join for Finance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CompanyKey]"
+                      name="CompanyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountKey]"
+                      name="AccountKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyKey]"
+                      name="CurrencyKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[JournalKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalKey]"
+                      name="JournalKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountType]"
+                      name="AccountType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyID]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyID]"
+                      name="CurrencyID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Debit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Debit]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Debit]"
+                      name="Debit"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Credit]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Credit]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Credit]"
+                      name="Credit"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Balance]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Balance]"
+                      name="Balance"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountCurrency]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AmountCurrency]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountCurrency]"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountTotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AmountTotal]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountTotal]"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Date_Move]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Date_Move]"
+                      name="Date_Move"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[JournalName]"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalName]"
+                      name="JournalName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[LatestRate]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRate]"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[LatestRateDate]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRateDate]"
+                      name="LatestRateDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
+                      dataType="i4"
+                      name="AccountKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyKey]"
+                      dataType="i4"
+                      name="CurrencyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[JournalKey]"
+                      dataType="i4"
+                      name="JournalKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      name="AccountType" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[CurrencyID]"
+                      dataType="i4"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Debit]"
+                      dataType="numeric"
+                      name="Debit"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Credit]"
+                      dataType="numeric"
+                      name="Credit"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
+                      dataType="numeric"
+                      name="Balance"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AmountCurrency]"
+                      dataType="numeric"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[AmountTotal]"
+                      dataType="numeric"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      name="Date_Move" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      name="JournalName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[LatestRate]"
+                      dataType="numeric"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].ExternalColumns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      name="LatestRateDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CompanyKey]"
+                      name="CompanyKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
+                      name="AccountKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CurrencyKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CurrencyKey]"
+                      name="CurrencyKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[JournalKey]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[JournalKey]"
+                      name="JournalKey" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[JournalName]"
+                      name="JournalName" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AccountType]"
+                      name="AccountType" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CurrencyID]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[CurrencyID]"
+                      name="CurrencyID" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Debit]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Debit]"
+                      name="Debit"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Credit]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Credit]"
+                      name="Credit"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Balance]"
+                      name="Balance"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AmountCurrency]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AmountCurrency]"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AmountTotal]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[AmountTotal]"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[Date_Move]"
+                      name="Date_Move" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[LatestRate]"
+                      dataType="numeric"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[LatestRate]"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[LatestRateDate]"
+                      name="LatestRateDate" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading into finance staging\Satging_Finance"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Satging_Finance"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Finance_Staging]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading into finance staging\Satging_Finance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Jayson_Gor\DATA_ANALYST.OIL-DATAWAREHOUSE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[CompanyKey]"
+                      cachedDataType="i4"
+                      cachedName="CompanyKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CompanyKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[AccountKey]"
+                      cachedDataType="i4"
+                      cachedName="AccountKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[CurrencyKey]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[JournalKey]"
+                      cachedDataType="i4"
+                      cachedName="JournalKey"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalKey]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalKey]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[AccountType]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AccountType"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AccountType]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[CurrencyID]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyID"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[CurrencyID]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[Debit]"
+                      cachedDataType="numeric"
+                      cachedName="Debit"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Debit]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Debit]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[Credit]"
+                      cachedDataType="numeric"
+                      cachedName="Credit"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Credit]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Credit]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[Balance]"
+                      cachedDataType="numeric"
+                      cachedName="Balance"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Balance]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[AmountCurrency]"
+                      cachedDataType="numeric"
+                      cachedName="AmountCurrency"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountCurrency]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountCurrency]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[AmountTotal]"
+                      cachedDataType="numeric"
+                      cachedName="AmountTotal"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountTotal]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[AmountTotal]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[Date_Move]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date_Move"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Date_Move]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[Date_Move]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[JournalName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="JournalName"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalName]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[JournalName]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[LatestRate]"
+                      cachedDataType="numeric"
+                      cachedName="LatestRate"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRate]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRate]" />
+                    <inputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].Columns[LatestRateDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LatestRateDate"
+                      externalMetadataColumnId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRateDate]"
+                      lineageId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output].Columns[LatestRateDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CompanyKey]"
+                      dataType="i4"
+                      name="CompanyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountKey]"
+                      dataType="i4"
+                      name="AccountKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyKey]"
+                      dataType="i4"
+                      name="CurrencyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalKey]"
+                      dataType="i4"
+                      name="JournalKey" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AccountType]"
+                      dataType="wstr"
+                      length="255"
+                      name="AccountType" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyID]"
+                      dataType="i4"
+                      name="CurrencyID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[JournalName]"
+                      dataType="wstr"
+                      length="255"
+                      name="JournalName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Debit]"
+                      dataType="numeric"
+                      name="Debit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Credit]"
+                      dataType="numeric"
+                      name="Credit"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
+                      dataType="numeric"
+                      name="Balance"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountCurrency]"
+                      dataType="numeric"
+                      name="AmountCurrency"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[AmountTotal]"
+                      dataType="numeric"
+                      name="AmountTotal"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[Date_Move]"
+                      dataType="dbTimeStamp"
+                      name="Date_Move" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRate]"
+                      dataType="numeric"
+                      name="LatestRate"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input].ExternalColumns[LatestRateDate]"
+                      dataType="dbTimeStamp"
+                      name="LatestRateDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading into finance staging\Satging_Finance.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Satging_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading into finance staging\Satging_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading into finance staging\Satging_Finance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading into finance staging.Paths[OLE DB Source Output]"
+              endId="Package\Loading into finance staging\Satging_Finance.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading into finance staging\Join for Finance.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7ACE4D2A-3FAC-446F-88D0-4559A9D57764}"
+      DTS:From="Package\Load into FactStock"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load into factCollection" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{109B8A19-56DA-42B0-9933-C2F717447E82}"
+      DTS:From="Package\Load into factCollection"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Loading into finance staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3734D058-EC1C-421F-960F-DAD1FDC3081E}"
+      DTS:From="Package\Loading into finance staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Loading into Fact Finance" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\Load into factCollection"
+          TopLeft="293.961544743833,17.2419351282898" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Load into FactStock"
+          TopLeft="15.3846144129538,20.5806463550268" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Loading into Fact Finance"
+          TopLeft="303.846159156787,276.619354432331" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Loading into finance staging"
+          TopLeft="293.076928153017,144.825806959586" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="188.984614412954,39.7112907416583">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.976930330879,0"
+              Start="0,0"
+              End="97.4769303308789,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.4769303308789,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="389.561544743833,58.8419351282898">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.91538340918441,85.983871831296"
+              Start="0,0"
+              End="9.91538340918441,78.483871831296">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.991935915648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.991935915648"
+                    Point2="0,42.991935915648"
+                    Point3="4,42.991935915648" />
+                  <mssgle:LineSegment
+                    End="5.91538340918441,42.991935915648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.91538340918441,42.991935915648"
+                    Point2="9.91538340918441,42.991935915648"
+                    Point3="9.91538340918441,46.991935915648" />
+                  <mssgle:LineSegment
+                    End="9.91538340918441,78.483871831296" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="402.261543654902,186.425806959586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.1935474727455"
+              Start="0,0"
+              End="0,82.6935474727455">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.6935474727455" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load into factCollection">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Load into factCollection\Join for Collection fact"
+          TopLeft="808.499988034368,29.4999996423721" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Load into factCollection\FactCollection"
+          TopLeft="802.499988570809,232.499997064471" />
+        <EdgeLayout
+          Id="Package\Load into factCollection.Paths[OLE DB Source Output]"
+          TopLeft="900.899988034368,71.0999996423721">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.7999994635584,161.399997422099"
+              Start="0,0"
+              End="-24.7999994635584,153.899997422099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.6999987110496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.6999987110496"
+                    Point2="0,80.6999987110496"
+                    Point3="-4,80.6999987110496" />
+                  <mssgle:LineSegment
+                    End="-20.7999994635584,80.6999987110496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.7999994635584,80.6999987110496"
+                    Point2="-24.7999994635584,80.6999987110496"
+                    Point3="-24.7999994635584,84.6999987110496" />
+                  <mssgle:LineSegment
+                    End="-24.7999994635584,153.899997422099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load into factCollection\FactCollection">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load into factCollection\Join for Collection fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Loading into Fact Finance">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Loading into Fact Finance\Fact_Finance"
+          TopLeft="708.499991312623,384.091393910144" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Loading into Fact Finance\Staging FInance"
+          TopLeft="695.88463042024,6.89784942003451" />
+        <EdgeLayout
+          Id="Package\Loading into Fact Finance.Paths[OLE DB Source Output]"
+          TopLeft="777.392310866432,48.4978494200345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,335.593544490109"
+              Start="0,0"
+              End="0,328.093544490109">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,328.093544490109" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Loading into finance staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Loading into finance staging\Join for Finance"
+          TopLeft="76.4999989420175,28.4999996572733" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Loading into finance staging\Satging_Finance"
+          TopLeft="92.5000049620866,267.500002354383" />
+        <EdgeLayout
+          Id="Package\Loading into finance staging.Paths[OLE DB Source Output]"
+          TopLeft="154.099998942017,70.0999996572733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.4000060200691,197.40000269711"
+              Start="0,0"
+              End="18.4000060200691,189.90000269711">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.700001348555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,94.700001348555"
+                    Point2="0,98.700001348555"
+                    Point3="4,98.700001348555" />
+                  <mssgle:LineSegment
+                    End="14.4000060200691,98.700001348555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.4000060200691,98.700001348555"
+                    Point2="18.4000060200691,98.700001348555"
+                    Point3="18.4000060200691,102.700001348555" />
+                  <mssgle:LineSegment
+                    End="18.4000060200691,189.90000269711" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
