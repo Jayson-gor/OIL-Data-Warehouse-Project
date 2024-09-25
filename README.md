@@ -81,7 +81,7 @@ Managed job triggers and error reporting using SQL Server Agent.
 #### Setting New JOb
 ![image](https://github.com/user-attachments/assets/d28cd680-26b8-4861-a0fd-4a7e949ccb65)
 #### Scheduling the New Job
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/201912f2-dc3c-4ac5-a452-4956abf49ebe)
 
 ## Data Warehouse Design & Data Modeling
 ### Star Schema Design:
@@ -125,6 +125,84 @@ Hierarchical attributes were flattened for simplicity in querying and reporting.
 
 Relationships between fact and dimension tables were maintained using foreign key constraints to ensure referential integrity.
 Fact tables were designed to aggregate data from various dimensions, allowing for complex analytics (e.g., sum of sales grouped by company, product, and date).
+
+![image](https://github.com/user-attachments/assets/c25fff28-4f32-4d94-a033-047d9e2f31d1)
+
+## ETL Pipelines and Challenges
+### ETL Pipelines Overview
+ETL (Extract, Transform, Load) pipelines are a critical component of data warehousing. These pipelines are responsible for moving data from multiple sources into a centralized data warehouse. In this project, the ETL process played a key role in extracting data from an Access Database, transforming it into the required structure, and loading it into the staging tables, and then into dimension and fact tables in the data warehouse.
+
+### Key Phases of ETL
+#### 1. Extract
+Data was extracted from a source system, which in this case was Microsoft Access.
+Tools like SSIS were used to connect to the Access database, extract data, and load it into the staging environment.
+The challenge during extraction was ensuring data quality, handling nulls, and ensuring the data types in Access were correctly mapped to SQL Server-compatible types.
+
+### 2. Transform
+This phase involved transforming the raw extracted data into a format suitable for analytical querying. In this project, transformation included:
+Data cleaning: Removing duplicates, handling missing values, and standardizing inconsistent data formats (e.g., dates in different formats).
+##### Data type conversions: For example, converting strings (e.g., dates stored as text) to the appropriate DATETIME format in SQL Server.
+##### Business rules enforcement: For instance, ensuring that only records with the State = 'posted' in Accounts_Dim were processed.
+Lookups: Joining with dimension tables like Company_Dim, Product_Dim, etc., to enrich the data.
+
+#### Challenges
+##### Data quality issues: 
+The data from the source system had inconsistencies such as date formats and null values, which required transformations to be handled carefully.
+##### Handling large data volumes: 
+Ensuring efficient processing when dealing with large datasets and avoiding performance bottlenecks during transformation steps.
+##### Incremental Loading: 
+Managing incremental loads for dimensions and fact tables using lookup transformations and ensuring only new or updated records were processed.
+
+### 3. Load
+After transforming the data, it was loaded into the destination tables in the data warehouse, including dimensional tables (such as Company_Dim, Currency_Dim, Product_Dim) and fact tables (such as Fact_Finance, Fact_Stock).
+In the Load step, there was a focus on:
+Inserting new records into the dimension and fact tables.
+Handling Slowly Changing Dimensions (SCDs), especially for dimensions like Company_Dim, where Type 1 (overwrite) and Type 2 (create new records) logic was applied based on whether values like the company name had changed.
+
+#### Challenges
+##### Handling Slowly Changing Dimensions: 
+Implementing SCD Type 1 and Type 2 logic to update dimension tables while maintaining historical data was complex.
+##### Ensuring Data Integrity: 
+Referential integrity between dimension and fact tables had to be maintained, and relationships needed to be properly enforced during the load process.
+##### Optimizing Load Performance: 
+SSIS packages had to be optimized for handling large datasets efficiently.
+
+## Challenges in ETL Pipelines
+### Data Quality Issues:
+The data extracted from the source systems often had inconsistencies, such as incorrect date formats, null values, and duplicate records. During the transformation phase, the ETL process was responsible for handling these inconsistencies to ensure data quality.
+#### Solution:
+Data cleansing during the ETL process involved using Derived Columns in SSIS to clean and standardize data formats.
+Conditional splits and Lookups were used to remove duplicates and handle null values before loading into destination tables.
+
+### Handling Slowly Changing Dimensions (SCDs):
+One of the primary challenges was implementing Slowly Changing Dimensions (SCD) for dimensions like Company_Dim, which required tracking historical changes while also updating records when needed.
+#### Solution:
+SCD Type 1: Overwrites existing data when the record has been updated (e.g., company details changed).
+SCD Type 2: Creates a new record with a new surrogate key when a historical change occurs (e.g., name changes), while marking the old record with an EndDate.
+This was implemented using Conditional Splits, Lookups, and Derived Columns in SSIS, along with SQL-based updates to mark records with EndDate or insert new records.
+
+### Performance Optimization:
+As the data volumes increased, performance issues became apparent. Some transformations, particularly Lookup transformations, required optimization to avoid slowing down the ETL process.
+#### Solution:
+Using Partial Cache mode for large lookup datasets to ensure only necessary rows were cached, reducing memory usage.
+Applying indexes on key columns in the source and destination tables to speed up lookups and joins.
+Breaking the ETL pipeline into smaller, more manageable tasks and running them in parallel to improve overall performance.
+
+### Handling Date Format Mismatches:
+One major issue was dealing with inconsistent date formats in the source data, especially when the source data (from Access) had dates stored as strings, making it difficult to perform transformations or joins based on dates.
+#### Solution:
+TRY_PARSE and TRY_CONVERT functions were used during the transformation phase to safely convert string-based dates into DATETIME format in SQL Server.
+This ensured that data was consistent and could be used for proper date-based lookups and joins.
+
+### Incremental Loading:
+Managing incremental data loads was another challenge, especially for large datasets, where loading all records at every run would have been inefficient.
+#### Solution:
+Control tables like LoadControl were created to store the last load time for each table.
+Incremental loads were handled by querying only the new or updated records based on ModifiedDate or WriteDate columns in the source data.
+
+
+
+
 
 
 
