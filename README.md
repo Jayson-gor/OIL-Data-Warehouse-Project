@@ -1,4 +1,6 @@
 # PROJECT OVERVIEW
+![etl_pipeline_for_data_warehouse](https://github.com/user-attachments/assets/5c13b9e0-396d-420b-94bd-3862373bfbd3)
+
 ## Project Title: OIL Data Warehouse Project
 ## Project Description:
 ### This project focuses on designing and building a data warehouse system for handling financial and sales data. The primary data source was an MS Access database, which was staged in SQL Server, and then transformed and loaded into dimensional and fact tables using SSIS (SQL Server Integration Services). Incremental loading and Slowly Changing Dimensions (SCD) logic were implemented to manage updates efficiently. The entire ETL process is automated through SQL Server Agent Jobs for daily execution.
